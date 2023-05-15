@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core/src/core';
 import { Task } from '../task.model';
 import {TaskService} from "../task.service";
 
@@ -19,9 +19,10 @@ export class TasksAddComponent implements OnInit {
 
     onTaskAdd(event) {
         let task: Task = new Task(event.target.value,false, this.getTodayAsString());
+        // @ts-ignore
         this.taskService.addTask(task)
             .subscribe(
-                (newTask: Task) => {
+                (newTask: any) => {
                     // clear the input
                     this.addTaskValue = ' ';
                     this.taskService.onTaskAdded.emit(newTask);

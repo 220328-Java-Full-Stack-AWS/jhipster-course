@@ -19,6 +19,7 @@ public class TasksApplication {
 
 	@Bean
 	CommandLineRunner runner(TaskService taskService) {
+
 		return args -> {
 			taskService.save( new Task(1L,"Create Spring Boot Application", LocalDate.now(), true) );
 			taskService.save( new Task(2L,"Create Spring Project Packages", LocalDate.now().plus(1, ChronoUnit.DAYS), false) );
